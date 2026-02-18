@@ -85,6 +85,7 @@ func (h *StudentHandler) UpdateStudent(c *gin.Context) {
 		return
 	}
 
+	// check จาก return 0 ที่ repositories (RowsAffected)
 	affected, err := h.Service.UpdateStudent(id, student)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
@@ -109,6 +110,7 @@ func (h *StudentHandler) UpdateStudent(c *gin.Context) {
 func (h *StudentHandler) DeleteStudent(c *gin.Context) {
 	id := c.Param("id")
 
+	// check จาก return 0 ที่ repositories (RowsAffected)
 	affected, err := h.Service.DeleteStudent(id)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Internal server error"})
